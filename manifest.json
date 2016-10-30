@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Youtube Pauser",
+  "version": "0.1",  
+  "permissions": [
+    "storage", "activeTab","tabs"
+ ],
+ "commands": {
+     "youtube-playpause":{
+      "suggested_key": {
+              "default": "MediaPlayPause"
+            },
+            "description": "Toggle youtube",
+              "global": true
+    },
+     "youtube-stopall":{
+      "suggested_key": {
+              "default": "Ctrl+Shift+3"
+            },
+            "description": "Stop all Youtube Players",
+              "global": true
+    }
+  },   
+    "background":{
+      "scripts" :["background.js"]
+    },
+    "browser_action": {
+      "default_icon": "icons/16.png",
+        "default_popup": "popup.html"
+},
+   "content_scripts": [
+	    {
+	        "matches": ["http://*.youtube.com/*","https://*.youtube.com/*"],
+	        "js": ["content.js"]
+	    }
+	],
+	"icons": { "16": "icons/16.png",
+           "48": "icons/48.png",
+          "128": "icons/128.png" 
+      }
+}
